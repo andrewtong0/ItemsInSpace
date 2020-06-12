@@ -1,7 +1,5 @@
 # MissingItems
-Program to cross-reference with a floor plan with a spreadsheet to check what items are missing in specified regions.
-
-MissingItems is a Python script that analyzes a PDF floor plan, determines what items exist in a set of regions, cross-references the items found with a spreadsheet, and lists the discrepancies between the spreadsheet and the floor plan.
+MissingItems is a Python script that fits a niche purpose (built for a friend) that analyzes a PDF floor plan, determines what items exist in a set of regions, cross-references the items found with a spreadsheet, and lists the discrepancies between the spreadsheet and the floor plan.
 
 ## Dependencies
 Pandas - Used for spreadsheet reading (.xlsx)

@@ -2,9 +2,9 @@
 MissingItems is a Python script that fits a niche purpose (built for a friend) that analyzes a PDF floor plan, determines what items exist in a set of regions, cross-references the items found with a spreadsheet, and lists the discrepancies between the spreadsheet and the floor plan.
 
 ## Dependencies
-Pandas - Used for spreadsheet reading (.xlsx)
-PyPDF2 - Used for gathering PDF details (e.g. width/height) and PDF generation
-pdfminer - Used for extracting locations of items from within a PDF
+- Pandas - Used for spreadsheet reading (.xlsx)
+- PyPDF2 - Used for gathering PDF details (e.g. width/height) and PDF generation
+- pdfminer - Used for extracting locations of items from within a PDF
 
 ## How it Works
 1. The user specifies an input floor plan PDF, a spreadsheet, and the regions that contain the associated items they want to check for. Regions consist of a unique name (to be identified by humans for readability), a room code (to know which region to check the items for in the spreadsheet), the page number of the floor plan PDF the region is in, and the coordinates for the bottom left and upper right corners of the region.

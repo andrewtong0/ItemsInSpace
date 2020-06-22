@@ -9,9 +9,9 @@ class ColumnNames(enum.Enum):
 
 # Defines a square region on the PDF, classified by a name, page number, and bottom left/upper right corner
 class Region:
-    def __init__(self, unique_name, name, page, x1, y1, x2, y2):
+    def __init__(self, unique_name, names, page, x1, y1, x2, y2):
         self.unique_name = unique_name
-        self.name = name
+        self.names = names
         self.page = page
         self.x1 = x1
         self.y1 = y1
@@ -20,8 +20,9 @@ class Region:
 
 
 regions = [
-    Region("1415-K013", "K013", 2, 2194, 800, 2320, 640),
-    Region("1417-K013", "K013", 2, 2318, 800, 2440, 640)
+    Region("1415-K013", ["K013"], 2, 2194, 800, 2320, 640),
+    Region("1417-K013", ["K013"], 2, 2318, 800, 2440, 640),
+    Region("1100-C1b/C9/C10", ["C001B", "C009", "C010"], 2, 2010, 2900, 2320, 2355),
 ]
 spreadsheet_input_filepath = "./input/spreadsheet.xlsx"
 pdf_input_filepath = "./input/floorplan.pdf"

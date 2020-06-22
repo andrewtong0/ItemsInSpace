@@ -44,8 +44,8 @@ def is_string_in_region_bounds(string_and_coords, x1, y1, x2, y2):
 # ===============================
 
 # Gets the spreadsheet dataframe given the number for the space
-def items_and_quantities_in_space(space_number):
-    queried_df = dataframe.loc[dataframe[user_input.ColumnNames.space_number.value] == space_number,
+def items_and_quantities_in_space(space_numbers):
+    queried_df = dataframe.loc[dataframe[user_input.ColumnNames.space_number.value].isin(space_numbers),
                                [user_input.ColumnNames.item_code.value, user_input.ColumnNames.item_qty_per_room.value]]
     return queried_df
 
@@ -110,8 +110,8 @@ dataframe = pd.DataFrame(spreadsheet, columns=[
 missing_items = []
 regions_to_add_to_pdf = []
 for region in user_input.regions:
-    region_name = region.name
-    region_df = items_and_quantities_in_space(region_name)
+    region_names = region.names
+    region_df = items_and_quantities_in_space(region_names)
     expected_region_items = construct_item_array_from_df(region_df)
     region_missing_items = items_not_found(expected_region_items, items_in_regions[region.unique_name], region)
 

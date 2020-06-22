@@ -28,10 +28,13 @@ def get_pdf_heights_and_widths(pdf_filepath):
 
 
 def generate_pdf_pages_for_regions(in_file, out_file_dir, out_file_name, regions):
+    now = datetime.now()
+    output_file_name = out_file_dir + out_file_name + "-" + str(now.strftime("%m-%d-%y_%H-%M-%S")) + ".pdf"
+
     with open(in_file, 'rb') as infp:
-        reader = PyPDF2.PdfFileReader(infp)
         writer = PyPDF2.PdfFileWriter()
         for region in regions:
+            reader = PyPDF2.PdfFileReader(infp)
             page = reader.getPage(region.page - 1)
 
             # Crop regions to specified selections
@@ -40,9 +43,6 @@ def generate_pdf_pages_for_regions(in_file, out_file_dir, out_file_name, regions
 
             # Add page to output PDF
             writer.addPage(page)
-
-        now = datetime.now()
-        output_file_name = out_file_dir + out_file_name + "-" + str(now.strftime("%m-%d-%y_%H-%M-%S")) + ".pdf"
         with open(output_file_name, 'wb') as output_file:
             writer.write(output_file)
             output_file.close()

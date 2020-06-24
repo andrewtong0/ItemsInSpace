@@ -1,6 +1,7 @@
 import pdf_operations
 import user_input
 import pandas as pd
+import pdf_extract_strings
 import data
 import re
 
@@ -92,12 +93,16 @@ def return_num_items_found(item_string, item_to_find):
 # MAIN FUNCTIONALITY
 # ==================
 
-# 1. Get all strings and associated coordinates for each string
-document_strings_and_coords = data.strings_and_coords
+# 1. Generate rotated PDFs
+pdf_operations.generate_rotated_pdfs_for_angles(user_input.pdf_input_filepath, user_input.rotation_angles)
+
+# 2. Get all strings and associated coordinates for each string
+# document_strings_and_coords = data.strings_and_coords
+# document_strings_and_coords = pdf_extract_strings.get_strings_in_document(user_input.pdf_input_filepath)
 items_in_regions = find_items_in_each_region(document_strings_and_coords, user_input.regions)
 
 
-# 2. Import spreadsheet dataframe
+# 3. Import spreadsheet dataframe
 spreadsheet = pd.read_excel(user_input.spreadsheet_input_filepath)
 dataframe = pd.DataFrame(spreadsheet, columns=[
     user_input.ColumnNames.item_code.value,
@@ -106,7 +111,7 @@ dataframe = pd.DataFrame(spreadsheet, columns=[
 ])
 
 
-# 3. For each region, get the dataframe of expected items
+# 4. For each region, get the dataframe of expected items
 missing_items = []
 regions_to_add_to_pdf = []
 for region in user_input.regions:
@@ -131,7 +136,7 @@ pdf_operations.generate_pdf_pages_for_regions(
 print(missing_items)
 
 
-# 4. Write results to file
+# 5. Write results to file
 file = open(user_input.text_output_filepath, "r+")
 file.write(str(missing_items))
 file.close()

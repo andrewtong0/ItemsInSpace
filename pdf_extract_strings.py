@@ -1,3 +1,4 @@
+import user_input
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.pdfpage import PDFPage
@@ -62,5 +63,5 @@ def get_strings_in_document(input_file_directory):
     return strings_dictionary
 
 
-strings_dict = get_strings_in_document("./pdfs/floorplan.pdf")
+strings_dict = get_strings_in_document(user_input.pdf_input_filepath)
 print(strings_dict)

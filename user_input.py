@@ -24,8 +24,9 @@ regions = [
     Region("1417-K013", ["K013"], 2, 2318, 800, 2440, 640),
     Region("1100-C1b/C9/C10", ["C001B", "C009", "C010"], 2, 2010, 2900, 2320, 2355),
 ]
+rotation_angles = [90]
 spreadsheet_input_filepath = "./input/spreadsheet.xlsx"
-pdf_input_filepath = "./input/floorplan.pdf"
+pdf_input_filepath = "./input/floorplan2.pdf"
 pdf_output_filepath = "./output/"
 pdf_output_name = "results"
 text_output_filepath = "./output/output.txt"

@@ -48,6 +48,24 @@ def generate_pdf_pages_for_regions(in_file, out_file_dir, out_file_name, regions
             output_file.close()
 
 
+def generate_rotated_pdf(in_file, rotation_angle):
+    out_file = "./input/rotated/rotated_" + str(rotation_angle) + ".pdf"
+    with open(in_file, 'rb') as infp:
+        reader = PyPDF2.PdfFileReader(infp)
+        writer = PyPDF2.PdfFileWriter()
+        for page_number in range(reader.getNumPages()):
+            rotated_page = reader.getPage(page_number).rotateClockwise(rotation_angle)
+            writer.addPage(rotated_page)
+        with open(out_file, 'wb') as output_file:
+            writer.write(output_file)
+            output_file.close()
+
+
+def generate_rotated_pdfs_for_angles(in_file, rotation_angles):
+    for rotation_angle in rotation_angles:
+        generate_rotated_pdf(in_file, rotation_angle)
+
+
 # Get document dimensions and scaling to convert pixel coordinates to PDF coordinates
 document_pdf_width_and_height = get_pdf_heights_and_widths(user_input.pdf_input_filepath)
 document_pdf_width = document_pdf_width_and_height[0]

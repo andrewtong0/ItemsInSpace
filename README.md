@@ -14,3 +14,6 @@ MissingItems is a Python script that fits a niche purpose (built for a friend) t
 
 ## Latest Updates:
 - Array of region names on the associated spreadsheet to cross reference a single region is now a valid input option
+
+## Planned Changes:
+- Adding in array of region specifications (dimension coordinates) for a single spreadsheet reference
